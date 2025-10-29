@@ -1,0 +1,203 @@
+{
+  "info": {
+    "name": "Cuaderno Digital API",
+    "description": "Colección de pruebas para la API de Cuaderno Digital",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@cuaderno.com\",\n  \"password\": \"admin123\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/auth/login",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Cursos - Listado",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/cursos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "cursos"]
+        }
+      }
+    },
+    {
+      "name": "Estudiantes - Por Curso",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/students/by-course/{{cursoId}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students", "by-course", "{{cursoId}}"]
+        }
+      }
+    },
+    {
+      "name": "Estudiantes - Búsqueda",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/students/search?q=mar&curso=1&division=1&limit=20",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "students", "search"],
+          "query": [
+            { "key": "q", "value": "mar" },
+            { "key": "curso", "value": "1" },
+            { "key": "division", "value": "1" },
+            { "key": "limit", "value": "20" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Familias - Vincular",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{familiaToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"codigo\": \"ABC-12-345\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/familias/vinculos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "familias", "vinculos"]
+        }
+      }
+    },
+    {
+      "name": "Familias - Mis hijos",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{familiaToken}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/familias/mis-hijos",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "familias", "mis-hijos"]
+        }
+      }
+    },
+    {
+      "name": "Anuncios - Crear",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Aviso General\",\n  \"mensaje\": \"Reunión el lunes\",\n  \"alcance\": \"General\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/anuncios",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "anuncios"]
+        }
+      }
+    },
+    {
+      "name": "Anuncios - Listado",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/anuncios",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "anuncios"]
+        }
+      }
+    },
+    {
+      "name": "Asistencias - Marcar",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fecha\": \"2024-03-01\",\n  \"items\": [\n    { \"studentId\": \"{{studentId}}\", \"estado\": \"Presente\" }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/asistencias/marcar",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "asistencias", "marcar"]
+        }
+      }
+    },
+    {
+      "name": "Asistencias - Historial",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/asistencias/historial?curso=1&division=1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "asistencias", "historial"],
+          "query": [
+            { "key": "curso", "value": "1" },
+            { "key": "division", "value": "1" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Asistencias - Resumen",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{token}}" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/asistencias/resumen?curso=1&division=1",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "asistencias", "resumen"],
+          "query": [
+            { "key": "curso", "value": "1" },
+            { "key": "division", "value": "1" }
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "token", "value": "" },
+    { "key": "familiaToken", "value": "" },
+    { "key": "cursoId", "value": "" },
+    { "key": "studentId", "value": "" }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "cuaderno-digital-backend",
+  "version": "1.0.0",
+  "description": "API para gestionar el cuaderno digital escolar",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "seed": "node src/scripts/seed.js",
+    "create-admin": "node src/scripts/createAdmin.js",
+    "lint": "eslint .",
+    "format": "prettier -w .",
+    "check:env": "node -e \"['MONGO_URI','JWT_SECRET'].forEach(k=>{if(!process.env[k]){console.error('Falta '+k);process.exit(1)}});console.log('OK env')\"",
+    "smoke": "node src/tests/smoke.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.6.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.2.5"
+  }
+}
